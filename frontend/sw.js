@@ -1,4 +1,4 @@
-const CACHE_NAME = "korean-app-v1";
+const CACHE_NAME = "korean-app-v2";
 
 const STATIC_ASSETS = [
   "/",
@@ -10,6 +10,7 @@ const STATIC_ASSETS = [
   "/js/services/api-client.js",
   "/js/services/local-cache.js",
   "/js/services/tts.js",
+  "/js/i18n.js",
   "/js/components/search-page.js",
   "/js/components/word-detail.js",
   "/js/components/conjugation-table.js",
