@@ -59,6 +59,7 @@ def build_database():
                 pronunciation=romanize(hangul),
                 type=wd["type"],
                 chinese_meaning=wd.get("chinese_meaning", ""),
+                meaning_ja=wd.get("meaning_ja", ""),
                 definition_kr=wd.get("definition_kr", ""),
                 level=wd.get("level", "beginner"),
                 is_irregular=(irr_type is not None),

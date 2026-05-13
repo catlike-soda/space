@@ -5,11 +5,11 @@ from models.dictionary import GrammarPattern, Favorite
 
 
 def search_words(query: str, lang: str = "kr", limit: int = 20) -> list:
-    """Search words by Korean or Chinese.
+    """Search words by Korean, Chinese, Japanese, or English.
 
     Args:
         query: Search term
-        lang: 'kr' or 'zh'
+        lang: 'kr', 'zh', 'ja', 'en'
         limit: Max results
     """
     q = query.strip()
@@ -19,6 +19,11 @@ def search_words(query: str, lang: str = "kr", limit: int = 20) -> list:
     if lang == "zh":
         results = (Word.query
                    .filter(Word.chinese_meaning.contains(q))
+                   .limit(limit)
+                   .all())
+    elif lang == "ja":
+        results = (Word.query
+                   .filter(Word.meaning_ja.contains(q))
                    .limit(limit)
                    .all())
     else:
@@ -48,7 +53,17 @@ def search_words(query: str, lang: str = "kr", limit: int = 20) -> list:
             if w not in results:
                 results.append(w)
 
-    return [w.to_dict() for w in results]
+    # Add meaning_for_ui field based on lang
+    result_dicts = []
+    for w in results:
+        d = w.to_dict()
+        if lang == "ja":
+            d["meaning_for_ui"] = d.get("meaning_ja") or d.get("chinese_meaning", "")
+        else:
+            d["meaning_for_ui"] = d.get("chinese_meaning", "")
+        result_dicts.append(d)
+
+    return result_dicts
 
 
 def get_word_detail(word_id: int) -> dict or None:
@@ -58,6 +73,7 @@ def get_word_detail(word_id: int) -> dict or None:
         return None
 
     data = word.to_dict()
+    data["meaning_for_ui"] = data.get("chinese_meaning", "")
 
     # Related words
     related = (RelatedWord.query

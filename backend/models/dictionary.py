@@ -12,7 +12,8 @@ class Word(db.Model):
     hanja = db.Column(db.String(100), nullable=True)
     pronunciation = db.Column(db.String(200), nullable=False)
     type = db.Column(db.String(20), nullable=False)  # noun, verb, adjective, adverb, determiner, etc.
-    chinese_meaning = db.Column(db.String(500), nullable=False)
+    chinese_meaning = db.Column(db.String(500), nullable=False, default="")
+    meaning_ja = db.Column(db.String(500), nullable=True)
     definition_kr = db.Column(db.String(1000), nullable=True)
     definition_en = db.Column(db.String(1000), nullable=True)
     level = db.Column(db.String(10), nullable=True)  # beginner, intermediate, advanced
@@ -33,7 +34,8 @@ class Word(db.Model):
             "hanja": self.hanja,
             "pronunciation": self.pronunciation,
             "type": self.type,
-            "chinese_meaning": self.chinese_meaning,
+            "chinese_meaning": self.chinese_meaning or "",
+            "meaning_ja": self.meaning_ja or "",
             "definition_kr": self.definition_kr,
             "definition_en": self.definition_en,
             "level": self.level,

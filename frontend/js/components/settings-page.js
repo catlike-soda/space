@@ -1,17 +1,22 @@
-/** Settings page: dark mode, accent color, about. */
+/** Settings page: dark mode, accent color, language, about. */
 
 const ACCENT_COLORS = [
-  { name: "暖粉", color: "#FF6B8A" },
-  { name: "珊瑚", color: "#FF6B6B" },
-  { name: "天空", color: "#4A90D9" },
-  { name: "薄荷", color: "#34C759" },
-  { name: "橙黄", color: "#FF9500" },
-  { name: "紫色", color: "#AF52DE" },
-  { name: "靛蓝", color: "#5856D6" },
-  { name: "棕褐", color: "#A2845E" },
+  { name: "accent_warm_pink", color: "#FF6B8A" },
+  { name: "accent_coral", color: "#FF6B6B" },
+  { name: "accent_sky", color: "#4A90D9" },
+  { name: "accent_mint", color: "#34C759" },
+  { name: "accent_orange", color: "#FF9500" },
+  { name: "accent_purple", color: "#AF52DE" },
+  { name: "accent_indigo", color: "#5856D6" },
+  { name: "accent_brown", color: "#A2845E" },
 ];
 
-let _darkMode = false;
+const LANGUAGES = [
+  { code: "ja", label: "日本語" },
+  { code: "zh", label: "中文" },
+];
+
+let _darkMode = true;
 let _accentColor = "#FF6B8A";
 
 function renderSettingsPage() {
@@ -21,38 +26,43 @@ function renderSettingsPage() {
   div.id = "page-settings";
   div.innerHTML = `
     <div class="settings-group">
-      <div class="settings-group-title">显示</div>
+      <div class="settings-group-title">${t('settings_display')}</div>
       <div class="settings-row">
-        <span class="settings-label">暗黑模式</span>
+        <span class="settings-label">${t('settings_dark_mode')}</span>
         <button class="toggle-switch" id="darkToggle" onclick="toggleDarkMode()"></button>
       </div>
       <div class="settings-row">
-        <span class="settings-label">主题色</span>
+        <span class="settings-label">${t('settings_accent')}</span>
       </div>
       <div class="settings-row" style="flex-wrap:wrap">
         <div class="accent-picker" id="accentPicker">
-          ${ACCENT_COLORS.map((c, i) => `
+          ${ACCENT_COLORS.map(c => `
             <div class="accent-dot" style="background:${c.color}" data-color="${c.color}"
-                 onclick="setAccentColor('${c.color}')" title="${c.name}"></div>
+                 onclick="setAccentColor('${c.color}')" title="${t(c.name)}"></div>
           `).join("")}
         </div>
       </div>
+      <div class="settings-row">
+        <span class="settings-label">${t('settings_language')}</span>
+        <select id="langSelect" onchange="changeLanguage(this.value)" style="font-size:14px;padding:6px 12px;border-radius:8px;border:1px solid var(--separator);background:var(--bg-input);color:var(--text-primary)">
+          ${LANGUAGES.map(l => `<option value="${l.code}" ${getLocale() === l.code ? 'selected' : ''}>${l.label}</option>`).join("")}
+        </select>
+      </div>
     </div>
     <div class="settings-group">
-      <div class="settings-group-title">关于</div>
+      <div class="settings-group-title">${t('settings_about')}</div>
       <div class="settings-row">
-        <span class="settings-label">版本</span>
+        <span class="settings-label">${t('settings_version')}</span>
         <span style="color:var(--text-secondary)">1.0.0</span>
       </div>
       <div class="settings-row">
-        <span class="settings-label">数据来源</span>
-        <span style="color:var(--text-secondary)">TOPIK词汇 + AI分析</span>
+        <span class="settings-label">${t('settings_data_source')}</span>
+        <span style="color:var(--text-secondary)">${t('settings_data_value')}</span>
       </div>
     </div>
   `;
   main.appendChild(div);
 
-  // Init
   loadSettings();
 }
 
@@ -63,6 +73,13 @@ async function loadSettings() {
 
   updateDarkToggle();
   updateAccentPicker();
+
+  // Ensure initial toggle state matches
+  const toggle = document.getElementById("darkToggle");
+  if (toggle) {
+    if (_darkMode) toggle.classList.add("on");
+    else toggle.classList.remove("on");
+  }
 }
 
 function toggleDarkMode() {
@@ -75,11 +92,8 @@ function toggleDarkMode() {
 function updateDarkToggle() {
   const btn = document.getElementById("darkToggle");
   if (!btn) return;
-  if (_darkMode) {
-    btn.classList.add("on");
-  } else {
-    btn.classList.remove("on");
-  }
+  if (_darkMode) btn.classList.add("on");
+  else btn.classList.remove("on");
 }
 
 function setAccentColor(color) {
@@ -94,4 +108,24 @@ function updateAccentPicker() {
     d.classList.remove("active");
     if (d.dataset.color === _accentColor) d.classList.add("active");
   });
+}
+
+function changeLanguage(loc) {
+  setLocale(loc);
+  // Reset search direction
+  currentLang = getDefaultSearchLang();
+  highlightLangBtn(currentLang);
+  // Refresh all page titles and labels
+  document.title = t("app_name");
+  document.querySelector('meta[name="apple-mobile-web-app-title"]').content = t("app_name");
+  const titles = getTitles();
+  document.getElementById("navTitle").textContent = titles[currentPage] || t("app_name");
+  // Update tab labels
+  document.querySelector(".tab-btn[data-page='search'] span").textContent = t("tab_search");
+  document.querySelector(".tab-btn[data-page='sentence'] span").textContent = t("tab_sentence");
+  document.querySelector(".tab-btn[data-page='favorites'] span").textContent = t("tab_favorites");
+  document.querySelector(".tab-btn[data-page='settings'] span").textContent = t("tab_settings");
+  // Update search input placeholder
+  const searchInput = document.getElementById("searchInput");
+  if (searchInput) searchInput.placeholder = t("search_placeholder");
 }

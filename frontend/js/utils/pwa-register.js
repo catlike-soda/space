@@ -11,7 +11,7 @@ if ("serviceWorker" in navigator) {
           newWorker.addEventListener("statechange", () => {
             if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
               // New content available
-              if (confirm("有新版本可用，是否刷新？")) {
+              if (confirm(t("pwa_update"))) {
                 window.location.reload();
               }
             }

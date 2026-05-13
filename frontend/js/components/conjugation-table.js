@@ -2,26 +2,25 @@
 
 const ConjugationTable = {
   _levels: [
-    { id: "informal_polite", kr: "해요체", zh: "非正式敬语" },
-    { id: "formal_polite", kr: "합쇼체", zh: "正式敬语" },
-    { id: "informal_casual", kr: "해체", zh: "半语" },
-    { id: "formal_neutral", kr: "하오체", zh: "半正式语" },
+    { id: "informal_polite", kr: "해요체", key: "conj_informal_polite" },
+    { id: "formal_polite", kr: "합쇼체", key: "conj_formal_polite" },
+    { id: "informal_casual", kr: "해체", key: "conj_informal_casual" },
+    { id: "formal_neutral", kr: "하오체", key: "conj_formal_neutral" },
   ],
   _moods: [
-    { id: "declarative", zh: "陈述" },
-    { id: "interrogative", zh: "疑问" },
-    { id: "imperative", zh: "命令" },
-    { id: "propositive", zh: "共动" },
+    { id: "declarative", key: "conj_declarative" },
+    { id: "interrogative", key: "conj_interrogative" },
+    { id: "imperative", key: "conj_imperative" },
+    { id: "propositive", key: "conj_propositive" },
   ],
   _tenses: ["present", "past", "future"],
-  _tenseLabels: { present: "现在", past: "过去", future: "将来" },
+  _tenseKeys: { present: "conj_present", past: "conj_past", future: "conj_future" },
 
   render(conjugations, wordType, isIrregular) {
     if (!conjugations || !conjugations.length) {
-      return '<div class="empty-state"><p>暂无用形数据</p></div>';
+      return `<div class="empty-state"><p>${t('conj_empty')}</p></div>`;
     }
 
-    // Build lookup: level -> mood -> tense -> form
     const lookup = {};
     for (const c of conjugations) {
       if (!lookup[c.speech_level]) lookup[c.speech_level] = {};
@@ -29,7 +28,6 @@ const ConjugationTable = {
       lookup[c.speech_level][c.mood][c.tense] = c;
     }
 
-    // Filter applicable moods by word type
     const moods = wordType === "adjective"
       ? this._moods.filter(m => m.id === "declarative" || m.id === "interrogative")
       : this._moods;
@@ -41,22 +39,21 @@ const ConjugationTable = {
 
       html += `<div style="margin-bottom:20px">`;
       html += `<div style="font-size:14px;font-weight:600;color:var(--accent);margin-bottom:8px">
-                 ${level.zh} <span style="font-weight:400;font-size:12px;color:var(--text-secondary)">${level.kr}</span>
+                 ${t(level.key)} <span style="font-weight:400;font-size:12px;color:var(--text-secondary)">${level.kr}</span>
                </div>`;
 
-      // Desktop table
       html += `<table class="conj-table" style="min-width:100%">
         <thead>
           <tr>
-            <th style="width:50px">语气</th>
-            ${this._tenses.map(t => `<th>${this._tenseLabels[t]}</th>`).join("")}
+            <th style="width:50px">${t('conj_col_mood')}</th>
+            ${this._tenses.map(tn => `<th>${t(this._tenseKeys[tn])}</th>`).join("")}
           </tr>
         </thead>
         <tbody>`;
 
       for (const mood of moods) {
         html += `<tr>
-          <td>${mood.zh}</td>`;
+          <td>${t(mood.key)}</td>`;
         for (const tense of this._tenses) {
           const form = lookup[level.id][mood.id]?.[tense];
           if (form) {
@@ -78,7 +75,7 @@ const ConjugationTable = {
 
     if (isIrregular) {
       html += `<div style="margin-top:12px;padding:10px 14px;background:#FFF3CD;border-radius:8px;font-size:12px;color:#856404">
-                ⚠ 此单词为不规则词，部分变形形式需特别记忆
+                ⚠ ${t('conj_irregular_warn')}
               </div>`;
     }
 

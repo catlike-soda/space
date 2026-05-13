@@ -1,28 +1,36 @@
 /** Application shell: router, tab bar, sheet management. */
 
 const PAGES = ["search", "sentence", "favorites", "settings"];
-const TITLES = { search: "韩语助手", sentence: "句子分析", favorites: "收藏", settings: "设置" };
 let currentPage = "search";
 let sheetVisible = false;
+
+function getTitles() {
+  return {
+    search: t("title_search"),
+    sentence: t("title_sentence"),
+    favorites: t("title_favorites"),
+    settings: t("title_settings"),
+  };
+}
 
 // ---- Navigation ----
 function navigateTo(page) {
   if (currentPage === page && !sheetVisible) return;
 
-  // Hide all pages
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
 
-  // Show target page
   const el = document.getElementById(`page-${page}`);
   if (el) el.classList.add("active");
 
-  // Update tab bar
   document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
   const tabBtn = document.querySelector(`.tab-btn[data-page="${page}"]`);
   if (tabBtn) tabBtn.classList.add("active");
 
-  // Update nav
-  document.getElementById("navTitle").textContent = TITLES[page];
+  // Favorites is dynamic with async refresh
+  if (page === "favorites") refreshFavorites();
+
+  const titles = getTitles();
+  document.getElementById("navTitle").textContent = titles[page];
   document.getElementById("navBack").style.display = (page === "search") ? "none" : "inline-flex";
 
   currentPage = page;
@@ -58,7 +66,7 @@ function applyTheme(dark, accent) {
   document.documentElement.style.setProperty("--accent", accent || "#FF6B8A");
   document.documentElement.style.setProperty("--accent-light", hexToRgba(accent || "#FF6B8A", 0.15));
   document.documentElement.style.setProperty("--accent-dark", darkenColor(accent || "#FF6B8A", 0.15));
-  document.querySelector('meta[name="theme-color"]').content = accent || "#FF6B8A";
+  document.querySelector('meta[name="theme-color"]').content = dark ? "#000000" : (accent || "#FF6B8A");
 }
 
 function hexToRgba(hex, alpha) {
@@ -77,17 +85,23 @@ function darkenColor(hex, amount) {
 
 // ---- Init ----
 async function initApp() {
-  // Load settings
+  // Load locale first, then settings
+  await loadLocale();
   const settings = await LocalCache.getSettings();
   applyTheme(settings.darkMode, settings.accentColor);
 
-  // Render initial pages
+  // Update tab bar labels
+  document.querySelector(".tab-btn[data-page='search'] span").textContent = t("tab_search");
+  document.querySelector(".tab-btn[data-page='sentence'] span").textContent = t("tab_sentence");
+  document.querySelector(".tab-btn[data-page='favorites'] span").textContent = t("tab_favorites");
+  document.querySelector(".tab-btn[data-page='settings'] span").textContent = t("tab_settings");
+
+  // Render pages
   renderSearchPage();
   renderSentencePage();
   renderFavoritesPage();
   renderSettingsPage();
 
-  // Default to search
   navigateTo("search");
 }
 
