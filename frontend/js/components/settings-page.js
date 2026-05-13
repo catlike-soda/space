@@ -129,7 +129,8 @@ function changeLanguage(loc) {
   renderSentencePage();
   renderFavoritesPage();
   renderSettingsPage();
-  // Navigate to current page
+  // Navigate to current page (reset first to bypass early-return)
   const wasPage = currentPage;
+  currentPage = "";
   navigateTo(wasPage);
 }

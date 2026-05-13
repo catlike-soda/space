@@ -20,10 +20,13 @@ function renderSearchPage() {
         </svg>
       </div>
       <div class="search-lang-toggle">
-        <button class="lang-btn" id="langBtnKr" data-lang="kr" onclick="switchLang('kr')">${t('search_btn_kr')}</button>
-        <button class="lang-btn" id="langBtnKrJa" data-lang="kr_ja" onclick="switchLang('kr_ja')">${t('search_btn_kr_ja')}</button>
-        <button class="lang-btn" id="langBtnZh" data-lang="zh" onclick="switchLang('zh')">${t('search_btn_zh')}</button>
-        <button class="lang-btn" id="langBtnJa" data-lang="ja" onclick="switchLang('ja')">${t('search_btn_ja')}</button>
+        ${getLocale() === 'ja' ? `
+          <button class="lang-btn" id="langBtnKrJa" data-lang="kr_ja" onclick="switchLang('kr_ja')">${t('search_btn_kr_ja')}</button>
+          <button class="lang-btn" id="langBtnJa" data-lang="ja" onclick="switchLang('ja')">${t('search_btn_ja')}</button>
+        ` : `
+          <button class="lang-btn" id="langBtnKr" data-lang="kr" onclick="switchLang('kr')">${t('search_btn_kr')}</button>
+          <button class="lang-btn" id="langBtnZh" data-lang="zh" onclick="switchLang('zh')">${t('search_btn_zh')}</button>
+        `}
       </div>
     </div>
     <div id="searchResults"></div>
@@ -46,7 +49,7 @@ function renderSearchPage() {
 
 function highlightLangBtn(lang) {
   document.querySelectorAll(".lang-btn").forEach(b => b.classList.remove("active"));
-  const btn = document.getElementById(`langBtn${lang.charAt(0).toUpperCase() + lang.slice(1)}`);
+  const btn = document.querySelector(`.lang-btn[data-lang="${lang}"]`);
   if (btn) btn.classList.add("active");
 }
 

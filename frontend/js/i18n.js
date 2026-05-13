@@ -253,7 +253,7 @@ function getLocale() {
 }
 
 function getDefaultSearchLang() {
-  return _locale === "ja" ? "ja" : "zh";
+  return _locale === "ja" ? "kr_ja" : "kr";
 }
 
 async function loadLocale() {
