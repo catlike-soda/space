@@ -35,8 +35,8 @@ const API = {
     return this._fetch("GET", `/word/${id}/conjugations${qs ? "?" + qs : ""}`);
   },
 
-  analyzeSentence(sentence) {
-    return this._fetch("POST", "/sentence/analyze", { sentence });
+  analyzeSentence(sentence, uiLang) {
+    return this._fetch("POST", "/sentence/analyze", { sentence, ui_lang: uiLang || "ja" });
   },
 
   getFavorites() {

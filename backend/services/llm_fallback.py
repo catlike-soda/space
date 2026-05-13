@@ -1,7 +1,7 @@
-"""LLM API fallback for complex sentence analysis.
+"""Free LLM API for sentence analysis using Google Gemini Flash.
 
-Uses DeepSeek Chat (free tier) for unresolved grammar analysis.
-Caches results to avoid repeat API calls.
+Gemini Flash 2.0: free forever, 1,500 requests/day, no credit card.
+Get API key: https://aistudio.google.com/apikey
 """
 
 import json
@@ -10,10 +10,8 @@ import os
 import urllib.request
 import urllib.error
 
-DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"
-DEEPSEEK_MODEL = "deepseek-chat"
+GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
 
-# Simple in-memory cache (survives within a single process)
 _cache = {}
 
 
@@ -21,64 +19,66 @@ def _cache_key(sentence: str) -> str:
     return hashlib.md5(sentence.encode()).hexdigest()
 
 
-def analyze_sentence(sentence: str) -> dict or None:
-    """Send sentence to LLM for detailed grammar analysis.
+def analyze_sentence(sentence: str, ui_lang: str = "ja") -> dict or None:
+    """Send sentence to Gemini Flash for grammar analysis. Free forever.
+
+    Args:
+        sentence: Korean sentence to analyze
+        ui_lang: 'ja' for Japanese, 'zh' for Chinese
 
     Returns parsed JSON dict if successful, None otherwise.
     """
-    key = _cache_key(sentence)
+    key = _cache_key(sentence + ui_lang)
     if key in _cache:
         return _cache[key]
 
-    api_key = os.environ.get("DEEPSEEK_API_KEY", "")
+    api_key = os.environ.get("GEMINI_API_KEY", "")
     if not api_key:
         return None
 
-    prompt = f"""You are a Korean language teacher. Analyze this Korean sentence thoroughly:
+    lang_instruction = "Japanese" if ui_lang == "ja" else "Chinese"
+
+    prompt = f"""Analyze this Korean sentence as a language teacher. Output ONLY valid JSON:
+
 "{sentence}"
 
-Return ONLY a JSON object (no markdown, no explanation) with this structure:
 {{
   "tokens": [
     {{
-      "original": "the original word/chunk in Korean",
-      "dictionary_form": "base dictionary form if it's a verb/adjective, otherwise null",
-      "meaning_zh": "Chinese meaning of this token",
-      "grammar_role": "subject/object/verb/adjective/adverb/etc"
+      "original": "Korean word/chunk",
+      "dictionary_form": "dictionary form or null",
+      "meaning": "meaning in {lang_instruction}",
+      "grammar_role": "subject/object/verb/adjective/adverb/particle/etc"
     }}
   ],
   "grammar_points": [
     {{
-      "pattern": "the grammar pattern used (Korean)",
-      "explanation_zh": "explanation in Chinese"
+      "pattern": "grammar pattern in Korean",
+      "explanation": "explanation in {lang_instruction}"
     }}
   ],
-  "translation_zh": "complete Chinese translation of the sentence"
+  "translation": "full translation in {lang_instruction}"
 }}"""
 
     try:
         req = urllib.request.Request(
-            DEEPSEEK_API_URL,
+            f"{GEMINI_API_URL}?key={api_key}",
             data=json.dumps({
-                "model": DEEPSEEK_MODEL,
-                "messages": [
-                    {"role": "system", "content": "You are a Korean language analysis engine. Always output valid JSON only."},
-                    {"role": "user", "content": prompt},
-                ],
-                "temperature": 0.1,
-                "max_tokens": 1024,
+                "contents": [{
+                    "parts": [{"text": prompt}]
+                }],
+                "generationConfig": {
+                    "temperature": 0.1,
+                    "maxOutputTokens": 1024,
+                }
             }).encode(),
-            headers={
-                "Content-Type": "application/json",
-                "Authorization": f"Bearer {api_key}",
-            },
+            headers={"Content-Type": "application/json"},
         )
 
         with urllib.request.urlopen(req, timeout=15) as resp:
             data = json.loads(resp.read().decode())
-            content = data["choices"][0]["message"]["content"]
+            content = data["candidates"][0]["content"]["parts"][0]["text"]
 
-            # Try to extract JSON from response
             content = content.strip()
             if content.startswith("```"):
                 lines = content.split("\n")
@@ -88,7 +88,5 @@ Return ONLY a JSON object (no markdown, no explanation) with this structure:
             _cache[key] = result
             return result
 
-    except (urllib.error.URLError, json.JSONDecodeError, KeyError, IndexError) as e:
-        return None
     except Exception:
         return None

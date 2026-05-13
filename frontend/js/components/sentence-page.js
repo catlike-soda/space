@@ -36,7 +36,7 @@ async function analyzeSentence() {
   btn.disabled = true;
 
   try {
-    const data = await API.analyzeSentence(sentence);
+    const data = await API.analyzeSentence(sentence, getLocale());
     loadingEl.style.display = "none";
     btn.disabled = false;
 
