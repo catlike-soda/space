@@ -1,0 +1,65 @@
+/* iOS-specific theme refinements */
+
+/* Smooth scrolling */
+@supports (-webkit-overflow-scrolling: touch) {
+  #mainContent, .sheet-content {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Safe area handling for notch devices */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .tab-bar {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  #mainContent {
+    padding-bottom: calc(env(safe-area-inset-bottom) + var(--tab-height) + 16px);
+  }
+}
+
+/* Disable text selection on iOS */
+* {
+  -webkit-touch-callout: none;
+}
+
+/* Prevent iOS zoom on input focus */
+input, textarea {
+  font-size: 16px !important;
+}
+
+/* iOS-style animation for page transitions */
+.page {
+  animation: fadeIn 0.25s ease-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Pull to refresh visual (iOS style) */
+.pull-indicator {
+  display: none;
+  text-align: center;
+  padding: 8px;
+  color: var(--text-tertiary);
+  font-size: 12px;
+}
+.pull-indicator.visible { display: block; }
+
+/* Active state for iOS */
+@media (hover: none) {
+  .card:active, .token-capsule:active {
+    background: rgba(118,118,128,0.12);
+  }
+}
+
+/* Dark mode specific iOS refinements */
+[data-theme="dark"] .card {
+  border-color: rgba(84,84,88,0.3);
+}
+[data-theme="dark"] .search-input {
+  border-color: rgba(84,84,88,0.4);
+}
+[data-theme="dark"] .analyze-btn {
+  box-shadow: 0 2px 8px rgba(255,107,138,0.3);
+}

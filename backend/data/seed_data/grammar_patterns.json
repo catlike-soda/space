@@ -1,0 +1,162 @@
+[
+  {
+    "pattern": "V/A-아/어서",
+    "name_zh": "表示原因/理由/顺序",
+    "description_zh": "用于连接两个句子，表示前句是后句的原因、理由或动作先后顺序。动词/形容词词干 + 아/어서。",
+    "usage_level": "all",
+    "example_sentence": "배가 아파서 병원에 갔어요",
+    "example_meaning": "因为肚子疼去了医院"
+  },
+  {
+    "pattern": "V-고",
+    "name_zh": "表示并列/先后",
+    "description_zh": "连接两个动作或状态，表示'和'或动作的先后顺序。动词词干 + 고。",
+    "usage_level": "all",
+    "example_sentence": "밥을 먹고 학교에 갔어요",
+    "example_meaning": "吃了饭然后去了学校"
+  },
+  {
+    "pattern": "V-(으)면",
+    "name_zh": "表示假设/条件",
+    "description_zh": "表示'如果...的话'。有终声 + 으면，无终声 + 면。",
+    "usage_level": "all",
+    "example_sentence": "시간이 있으면 영화를 볼 거예요",
+    "example_meaning": "如果有时间就看电影"
+  },
+  {
+    "pattern": "V-지 않다",
+    "name_zh": "表示否定",
+    "description_zh": "长形否定式，'不...'。动词词干 + 지 않다。",
+    "usage_level": "all",
+    "example_sentence": "오늘은 학교에 가지 않아요",
+    "example_meaning": "今天不去学校"
+  },
+  {
+    "pattern": "V-고 싶다",
+    "name_zh": "表示愿望/想做某事",
+    "description_zh": "表示'想做...'。动词词干 + 고 싶다。",
+    "usage_level": "beginner",
+    "example_sentence": "한국에 가고 싶어요",
+    "example_meaning": "我想去韩国"
+  },
+  {
+    "pattern": "V-(으)ㄹ 거예요",
+    "name_zh": "表示将来/打算",
+    "description_zh": "表示将来时态或计划打算。有终声 + 을 거예요，无终声 + ㄹ 거예요。",
+    "usage_level": "beginner",
+    "example_sentence": "내일 친구를 만날 거예요",
+    "example_meaning": "明天要见朋友"
+  },
+  {
+    "pattern": "V-고 있다",
+    "name_zh": "表示正在进行",
+    "description_zh": "表示动作正在进行中。动词词干 + 고 있다。",
+    "usage_level": "beginner",
+    "example_sentence": "지금 공부하고 있어요",
+    "example_meaning": "现在正在学习"
+  },
+  {
+    "pattern": "V-(으)세요",
+    "name_zh": "表示命令/请求（敬语）",
+    "description_zh": "敬语形式的命令或请求。有终声 + 으세요，无终声 + 세요。",
+    "usage_level": "beginner",
+    "example_sentence": "여기 앉으세요",
+    "example_meaning": "请坐这里"
+  },
+  {
+    "pattern": "N-이/가",
+    "name_zh": "主语助词",
+    "description_zh": "表示主语。有终声 + 이，无终声 + 가。",
+    "usage_level": "beginner",
+    "example_sentence": "날씨가 좋아요",
+    "example_meaning": "天气好"
+  },
+  {
+    "pattern": "N-은/는",
+    "name_zh": "主题助词",
+    "description_zh": "表示主题或对比。有终声 + 은，无终声 + 는。",
+    "usage_level": "beginner",
+    "example_sentence": "저는 학생입니다",
+    "example_meaning": "我是学生"
+  },
+  {
+    "pattern": "N-을/를",
+    "name_zh": "宾语助词",
+    "description_zh": "表示宾语。有终声 + 을，无终声 + 를。",
+    "usage_level": "beginner",
+    "example_sentence": "책을 읽어요",
+    "example_meaning": "读书"
+  },
+  {
+    "pattern": "N-에",
+    "name_zh": "表示地点/时间",
+    "description_zh": "表示存在的地点、去的目的地或时间点。",
+    "usage_level": "beginner",
+    "example_sentence": "학교에 가요",
+    "example_meaning": "去学校"
+  },
+  {
+    "pattern": "N-에서",
+    "name_zh": "表示动作发生地点",
+    "description_zh": "表示动作发生的地点或'从...'。",
+    "usage_level": "beginner",
+    "example_sentence": "도서관에서 공부해요",
+    "example_meaning": "在图书馆学习"
+  },
+  {
+    "pattern": "V-지만",
+    "name_zh": "表示转折/'虽然...但是'",
+    "description_zh": "连接两个分句表示转折。动词/形容词词干 + 지만。",
+    "usage_level": "intermediate",
+    "example_sentence": "한국어는 어렵지만 재미있어요",
+    "example_meaning": "韩语虽然难但有趣"
+  },
+  {
+    "pattern": "V-(으)니까",
+    "name_zh": "表示原因/发现",
+    "description_zh": "表示主观原因或发现了某种情况。有终声 + 으니까，无终声 + 니까。",
+    "usage_level": "intermediate",
+    "example_sentence": "날씨가 추우니까 따뜻하게 입으세요",
+    "example_meaning": "因为天气冷，请穿暖和点"
+  },
+  {
+    "pattern": "V-는 것",
+    "name_zh": "名词化/...的事",
+    "description_zh": "将动词转化为名词形式。动词词干 + 는 것。",
+    "usage_level": "intermediate",
+    "example_sentence": "한국어를 공부하는 것은 재미있어요",
+    "example_meaning": "学习韩语很有趣"
+  },
+  {
+    "pattern": "V-(으)려고 하다",
+    "name_zh": "表示意图/打算",
+    "description_zh": "表示'打算做...'或'想要做...'。",
+    "usage_level": "intermediate",
+    "example_sentence": "한국에 유학 가려고 해요",
+    "example_meaning": "打算去韩国留学"
+  },
+  {
+    "pattern": "V-아/어 보다",
+    "name_zh": "表示尝试",
+    "description_zh": "表示'试着做...'、'做过...'的经历。",
+    "usage_level": "beginner",
+    "example_sentence": "김치를 먹어 봤어요",
+    "example_meaning": "吃过泡菜"
+  },
+  {
+    "pattern": "V-(으)ㄹ 수 있다/없다",
+    "name_zh": "表示能力/可能性",
+    "description_zh": "表示'可以/不可以做...'。",
+    "usage_level": "beginner",
+    "example_sentence": "한국어를 할 수 있어요",
+    "example_meaning": "会说韩语"
+  },
+  {
+    "pattern": "V-아/어야 하다/되다",
+    "name_zh": "表示义务/必须",
+    "description_zh": "表示'必须/应该做...'。",
+    "usage_level": "intermediate",
+    "example_sentence": "숙제를 해야 해요",
+    "example_meaning": "必须做作业"
+  }
+]
