@@ -1,14 +1,14 @@
 /** Settings page: dark mode, accent color, language, about. */
 
 const ACCENT_COLORS = [
-  { name: "accent_warm_pink", color: "#FF6B8A" },
-  { name: "accent_coral", color: "#FF6B6B" },
-  { name: "accent_sky", color: "#4A90D9" },
-  { name: "accent_mint", color: "#34C759" },
-  { name: "accent_orange", color: "#FF9500" },
-  { name: "accent_purple", color: "#AF52DE" },
-  { name: "accent_indigo", color: "#5856D6" },
-  { name: "accent_brown", color: "#A2845E" },
+  { name: "accent_warm_pink", color: "#FF7BA6" },
+  { name: "accent_coral", color: "#FF8A80" },
+  { name: "accent_peach", color: "#FFB997" },
+  { name: "accent_sky", color: "#89C4F4" },
+  { name: "accent_mint", color: "#7BC8A4" },
+  { name: "accent_lavender", color: "#C3A6D8" },
+  { name: "accent_butter", color: "#FFE08A" },
+  { name: "accent_rose", color: "#F8BBD0" },
 ];
 
 const LANGUAGES = [
