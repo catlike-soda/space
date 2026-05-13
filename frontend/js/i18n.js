@@ -256,10 +256,18 @@ function getDefaultSearchLang() {
   return _locale === "ja" ? "kr_ja" : "kr";
 }
 
+function detectBrowserLocale() {
+  const lang = (navigator.language || navigator.languages?.[0] || "").toLowerCase();
+  if (lang.startsWith("zh")) return "zh";
+  return "ja"; // default: Japanese
+}
+
 async function loadLocale() {
   const saved = await LocalCache.get("settings", "locale");
   if (saved && I18N[saved.value]) {
     _locale = saved.value;
+  } else {
+    _locale = detectBrowserLocale();
   }
   document.documentElement.lang = _locale === "ja" ? "ja" : "zh-CN";
 }
