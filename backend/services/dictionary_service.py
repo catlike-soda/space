@@ -5,74 +5,63 @@ from models.dictionary import GrammarPattern, Favorite
 
 
 def search_words(query: str, lang: str = "kr", limit: int = 20) -> list:
-    """Search words by Korean, Chinese, Japanese, or English.
+    """Search words by Korean, Chinese, or Japanese with fuzzy cross-language matching.
 
-    Args:
-        query: Search term
-        lang: 'kr', 'zh', 'ja', 'en'
-        limit: Max results
+    Searches the primary meaning column first, then falls back to all meaning columns.
     """
     q = query.strip()
     if not q:
         return []
 
-    if lang == "zh":
-        results = (Word.query
-                   .filter(Word.chinese_meaning.contains(q))
-                   .limit(limit)
-                   .all())
-    elif lang == "ja":
-        results = (Word.query
-                   .filter(Word.meaning_ja.contains(q))
-                   .limit(limit)
-                   .all())
-    elif lang == "kr_ja":
-        # Search by Korean, display Japanese
+    results = []
+    seen_ids = set()
+
+    def add_unique(words_list):
+        for w in words_list:
+            if w.id not in seen_ids:
+                results.append(w)
+                seen_ids.add(w.id)
+
+    # Hangul search (kr, kr_ja modes)
+    if lang in ("kr", "kr_ja"):
         exact = Word.query.filter(Word.hangul == q).all()
         prefix = (Word.query
                   .filter(Word.hangul.startswith(q))
                   .filter(Word.hangul != q)
-                  .limit(limit)
-                  .all())
+                  .limit(limit).all())
         contains = (Word.query
                     .filter(Word.hangul.contains(q))
                     .filter(~Word.hangul.startswith(q))
-                    .limit(limit)
-                    .all())
-        results = exact + prefix + contains
-        results = results[:limit]
-    else:
-        # Search by hangul (exact match first, then prefix, then contains)
-        exact = Word.query.filter(Word.hangul == q).all()
-        prefix = (Word.query
-                  .filter(Word.hangul.startswith(q))
-                  .filter(Word.hangul != q)
-                  .limit(limit)
-                  .all())
-        contains = (Word.query
-                    .filter(Word.hangul.contains(q))
-                    .filter(~Word.hangul.startswith(q))
-                    .limit(limit)
-                    .all())
+                    .limit(limit).all())
+        add_unique(exact)
+        add_unique(prefix)
+        add_unique(contains)
 
-        results = exact + prefix + contains
-        results = results[:limit]
+    # Primary meaning search
+    primary_col = Word.chinese_meaning if lang == "zh" else Word.meaning_ja if lang in ("ja", "kr_ja") else None
+    if primary_col is not None:
+        add_unique(Word.query.filter(primary_col.contains(q)).limit(limit).all())
 
-    # Also search by pronunciation
+    # Cross-search: always try all meaning columns for fuzzy matching
+    if len(results) < limit:
+        for col in [Word.chinese_meaning, Word.meaning_ja]:
+            add_unique(Word.query.filter(col.contains(q)).limit(limit * 2).all())
+
+    # Also search by pronunciation as last resort
     if len(results) < limit:
         pron_results = (Word.query
                         .filter(Word.pronunciation.contains(q.lower()))
                         .limit(limit - len(results))
                         .all())
-        for w in pron_results:
-            if w not in results:
-                results.append(w)
+        add_unique(pron_results)
+
+    results = results[:limit]
 
     # Add meaning_for_ui field based on lang
     result_dicts = []
     for w in results:
         d = w.to_dict()
-        if lang == "ja" or lang == "kr_ja":
+        if lang in ("ja", "kr_ja"):
             d["meaning_for_ui"] = d.get("meaning_ja") or d.get("chinese_meaning", "")
         else:
             d["meaning_for_ui"] = d.get("chinese_meaning", "")
