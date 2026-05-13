@@ -1,0 +1,312 @@
+[
+  {
+    "hangul": "가다",
+    "related": "걷다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "가다",
+    "related": "오다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "오다",
+    "related": "도착하다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "오다",
+    "related": "돌아오다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "보다",
+    "related": "바라보다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "보다",
+    "related": "관찰하다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "보다",
+    "related": "쳐다보다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "자다",
+    "related": "일어나다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "입다",
+    "related": "벗다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "열다",
+    "related": "닫다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "알다",
+    "related": "모르다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "사랑하다",
+    "related": "좋아하다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "사랑하다",
+    "related": "미워하다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "미워하다",
+    "related": "싫어하다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "화내다",
+    "related": "짜증내다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "웃다",
+    "related": "울다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "사다",
+    "related": "팔다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "공부하다",
+    "related": "배우다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "시작하다",
+    "related": "끝내다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "성공하다",
+    "related": "실패하다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "좋다",
+    "related": "훌륭하다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "좋다",
+    "related": "나쁘다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "크다",
+    "related": "넓다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "크다",
+    "related": "작다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "작다",
+    "related": "좁다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "많다",
+    "related": "풍부하다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "많다",
+    "related": "적다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "적다",
+    "related": "부족하다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "길다",
+    "related": "짧다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "높다",
+    "related": "낮다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "넓다",
+    "related": "좁다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "무겁다",
+    "related": "가볍다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "빠르다",
+    "related": "급하다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "빠르다",
+    "related": "느리다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "강하다",
+    "related": "약하다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "뜨겁다",
+    "related": "차갑다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "춥다",
+    "related": "차갑다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "춥다",
+    "related": "덥다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "덥다",
+    "related": "뜨겁다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "맛있다",
+    "related": "맛없다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "비싸다",
+    "related": "싸다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "쉽다",
+    "related": "간단하다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "쉽다",
+    "related": "어렵다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "어렵다",
+    "related": "까다롭다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "어렵다",
+    "related": "복잡하다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "재미있다",
+    "related": "재미없다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "기쁘다",
+    "related": "행복하다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "기쁘다",
+    "related": "슬프다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "슬프다",
+    "related": "괴롭다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "아프다",
+    "related": "건강하다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "예쁘다",
+    "related": "아름답다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "예쁘다",
+    "related": "귀엽다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "깨끗하다",
+    "related": "더럽다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "조용하다",
+    "related": "시끄럽다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "편하다",
+    "related": "불편하다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "착하다",
+    "related": "나쁘다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "바쁘다",
+    "related": "한가하다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "위험하다",
+    "related": "안전하다",
+    "type": "antonym"
+  },
+  {
+    "hangul": "사랑",
+    "related": "증오",
+    "type": "antonym"
+  },
+  {
+    "hangul": "이야기하다",
+    "related": "말하다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "찾다",
+    "related": "발견하다",
+    "type": "synonym"
+  },
+  {
+    "hangul": "행복",
+    "related": "불행",
+    "type": "antonym"
+  }
+]

@@ -147,6 +147,29 @@ def build_database():
         db.session.commit()
         print(f"Imported {sent_count} example sentences.")
 
+        # --- Import related words ---
+        try:
+            related_data = load_json("related_words.json")
+            rel_count = 0
+            for entry in related_data:
+                hangul = entry["hangul"]
+                rel_hangul = entry["related"]
+                word = Word.query.filter(Word.hangul == hangul).first()
+                rel_word = Word.query.filter(Word.hangul == rel_hangul).first()
+                if not word or not rel_word:
+                    continue
+                rw = RelatedWord(
+                    word_id=word.id,
+                    related_id=rel_word.id,
+                    relation_type=entry["type"],
+                )
+                db.session.add(rw)
+                rel_count += 1
+            db.session.commit()
+            print(f"Imported {rel_count} related word pairs.")
+        except Exception:
+            print("No related_words.json found, skipping.")
+
         print(f"\nDatabase built successfully at: {DB_PATH}")
         print(f"Stats: {Word.query.count()} words, "
               f"{Conjugation.query.count()} conjugations, "
