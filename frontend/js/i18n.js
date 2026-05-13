@@ -13,9 +13,9 @@ const I18N = {
 
     search_placeholder: "输入韩语或中文...",
     search_btn_kr: "한국어 → 中文",
+    search_btn_kr_ja: "한국어 → 日本語",
     search_btn_zh: "中文 → 한국어",
     search_btn_ja: "日本語 → 한국어",
-    search_btn_en: "English → 한국어",
     search_loading: "查询中...",
     search_no_results: '未找到 "{query}"',
     search_no_hint: "试试其他关键词或切换搜索语言",
@@ -128,10 +128,10 @@ const I18N = {
     title_settings: "設定",
 
     search_placeholder: "韓国語または日本語で検索...",
-    search_btn_kr: "한국어 → 日本語",
+    search_btn_kr: "한국어 → 中国語",
+    search_btn_kr_ja: "한국어 → 日本語",
     search_btn_zh: "中国語 → 한국어",
     search_btn_ja: "日本語 → 한국어",
-    search_btn_en: "English → 한국어",
     search_loading: "検索中...",
     search_no_results: '「{query}」が見つかりません',
     search_no_hint: "別のキーワードを試すか、検索言語を切り替えてください",

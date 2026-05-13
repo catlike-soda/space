@@ -26,6 +26,21 @@ def search_words(query: str, lang: str = "kr", limit: int = 20) -> list:
                    .filter(Word.meaning_ja.contains(q))
                    .limit(limit)
                    .all())
+    elif lang == "kr_ja":
+        # Search by Korean, display Japanese
+        exact = Word.query.filter(Word.hangul == q).all()
+        prefix = (Word.query
+                  .filter(Word.hangul.startswith(q))
+                  .filter(Word.hangul != q)
+                  .limit(limit)
+                  .all())
+        contains = (Word.query
+                    .filter(Word.hangul.contains(q))
+                    .filter(~Word.hangul.startswith(q))
+                    .limit(limit)
+                    .all())
+        results = exact + prefix + contains
+        results = results[:limit]
     else:
         # Search by hangul (exact match first, then prefix, then contains)
         exact = Word.query.filter(Word.hangul == q).all()
@@ -57,7 +72,7 @@ def search_words(query: str, lang: str = "kr", limit: int = 20) -> list:
     result_dicts = []
     for w in results:
         d = w.to_dict()
-        if lang == "ja":
+        if lang == "ja" or lang == "kr_ja":
             d["meaning_for_ui"] = d.get("meaning_ja") or d.get("chinese_meaning", "")
         else:
             d["meaning_for_ui"] = d.get("chinese_meaning", "")

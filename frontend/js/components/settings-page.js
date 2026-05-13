@@ -114,18 +114,22 @@ function changeLanguage(loc) {
   setLocale(loc);
   // Reset search direction
   currentLang = getDefaultSearchLang();
-  highlightLangBtn(currentLang);
-  // Refresh all page titles and labels
+  // Re-render all pages with new locale
+  const main = document.getElementById("mainContent");
+  main.innerHTML = "";
   document.title = t("app_name");
   document.querySelector('meta[name="apple-mobile-web-app-title"]').content = t("app_name");
-  const titles = getTitles();
-  document.getElementById("navTitle").textContent = titles[currentPage] || t("app_name");
   // Update tab labels
   document.querySelector(".tab-btn[data-page='search'] span").textContent = t("tab_search");
   document.querySelector(".tab-btn[data-page='sentence'] span").textContent = t("tab_sentence");
   document.querySelector(".tab-btn[data-page='favorites'] span").textContent = t("tab_favorites");
   document.querySelector(".tab-btn[data-page='settings'] span").textContent = t("tab_settings");
-  // Update search input placeholder
-  const searchInput = document.getElementById("searchInput");
-  if (searchInput) searchInput.placeholder = t("search_placeholder");
+  // Render all pages fresh
+  renderSearchPage();
+  renderSentencePage();
+  renderFavoritesPage();
+  renderSettingsPage();
+  // Navigate to current page
+  const wasPage = currentPage;
+  navigateTo(wasPage);
 }

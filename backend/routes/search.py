@@ -15,7 +15,7 @@ def search():
     if not query:
         return jsonify({"results": [], "query": ""})
 
-    if lang not in ("kr", "zh", "ja"):
+    if lang not in ("kr", "zh", "ja", "kr_ja"):
         lang = "kr"
 
     results = search_words(query, lang)

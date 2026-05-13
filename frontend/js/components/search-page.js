@@ -21,6 +21,7 @@ function renderSearchPage() {
       </div>
       <div class="search-lang-toggle">
         <button class="lang-btn" id="langBtnKr" data-lang="kr" onclick="switchLang('kr')">${t('search_btn_kr')}</button>
+        <button class="lang-btn" id="langBtnKrJa" data-lang="kr_ja" onclick="switchLang('kr_ja')">${t('search_btn_kr_ja')}</button>
         <button class="lang-btn" id="langBtnZh" data-lang="zh" onclick="switchLang('zh')">${t('search_btn_zh')}</button>
         <button class="lang-btn" id="langBtnJa" data-lang="ja" onclick="switchLang('ja')">${t('search_btn_ja')}</button>
       </div>
