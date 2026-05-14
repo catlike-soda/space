@@ -1,101 +1,100 @@
-# ソーダ韓国語辞書 🍑 Soda Korean Dictionary
+<div align="center">
 
-> 日本語学習者に触発された、可愛くて実用的な韓国語辞書アプリ  
-> 受日语学习 App「识日」启发而制作的可爱实用韩语词典
+# 🍑 ソーダ韓国語辞書
+
+### いますぐ使える韓国語辞書 ｜ 即开即用的韩语词典
+
+</div>
+
+<p align="center">
+  <a href="https://korean-app-c77j.onrender.com">
+    <img src="https://img.shields.io/badge/🚀_いますぐ開く_｜_立即打开-FF7BA6?style=for-the-badge&logo=safari&logoColor=white&labelColor=FF5C8A&color=FF7BA6" alt="Open App">
+  </a>
+</p>
+
+<h3 align="center">👆 クリックで開く ｜ 点击打开</h3>
+
+<p align="center">
+  <sub>📱 iPhone: Safariで開く → 共有 → ホーム画面に追加 → アプリ化</sub>
+</p>
 
 ---
 
-## 💡 きっかけ / 灵感来源
+## 💡 きっかけ ｜ 灵感来源
 
-日本語を勉強していた時、「[识日](https://apps.apple.com/cn/app/id6738333132)」というアプリに出会いました。洗練されたUI、使いやすい辞書機能、AIによる文章分析…素晴らしいアプリでしたが、「これの韓国語版があればいいのに」と思いました。
+日本語学習アプリ「[识日](https://apps.apple.com/cn/app/id6738333132)」に出会い、その洗練された体験に感動。
 
-そこで **ソーダ韓国語辞書** を作りました。日本語話者と中国語話者が、それぞれの母語で韓国語を楽しく学べる場所です。
+> **「これの韓国語版があったらいいのに」**
+
+そう思って **ソーダ韓国語辞書** を作りました。
+
+> 学日语时发现了「识日」App，界面精致功能强大。心想"有个韩语版多好"，于是就做了这个。
 
 ---
 
-## ✨ できること / 功能
+## ✨ 機能 ｜ 功能
 
-| 功能 | 説明 |
+<p align="center">
+  <img src="https://img.shields.io/badge/🔍_多言語検索_多语言查词-FFE0E8?style=flat-square&logoColor=white" alt="">
+  <img src="https://img.shields.io/badge/📝_活用形48種_48种变形-FFE0E8?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/🤖_AI文章分析_AI句子分析-FFE0E8?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/🌙_ダークモード_暗黑模式-FFE0E8?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/🎨_かわいいUI_可爱界面-FFE0E8?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/🌐_日中UI切替_中日前切换-FFE0E8?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/📚_2,120語_2120词-FFE0E8?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/📱PWA対応_支持PWA-FFE0E8?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/❤️_お気に入り_收藏夹-FFE0E8?style=flat-square" alt="">
+</p>
+
+| 機能 | 説明 |
 |------|------|
-| 🔍 **多言語検索** | 韓国語・中国語・日本語で検索。入力言語を自動判定 |
-| 📝 **活用形表示** | すべての動詞・形容詞の活用形を網羅 (敬語4段階 × 4ムード × 3時制 = 48種類) |
-| 🤖 **AI文章分析** | DeepSeek AI による韓国語文章の文法解析と翻訳 |
-| 🌙 **ダークモード** | 目に優しいダークモード標準搭載 |
-| 🎨 **かわいいUI** | ピンク系マカロンカラー、大きめ角丸、バウンスアニメーション |
-| 🌐 **多言語UI** | 日本語 / 中国語 インターフェース切替（ブラウザ言語で自動判定） |
-| 📚 **2,120語収録** | 367動詞 + 299形容詞 + 1,230名詞 + 日常フレーズ |
-| 💾 **オフライン対応** | PWA対応、ホーム画面に追加すればアプリのように使える |
-| ❤️ **お気に入り** | 単語をお気に入り登録、後で復習 |
+| 🔍 多言語検索 | 韓国語・日本語・中国語で単語を検索 |
+| 📝 活用形表示 | 敬語4段階 × 4形式 × 3時制 = 48種類の活用形 |
+| 🤖 AI分析 | DeepSeek AIが韓国語文章を解析・翻訳 |
+| 🌙 ダークモード | 目に優しい暗色テーマ（標準ON） |
+| 🎨 かわいいUI | ピンク系マカロンカラー + 大きめ角丸 + バウンス |
+| 🌐 多言語UI | 日本語 / 中国語 表示切替（ブラウザ言語で自動判定） |
+| 📱 PWA対応 | ホーム画面に追加でアプリ化 |
+
+| 功能 | 说明 |
+|------|------|
+| 🔍 多语言查词 | 韩语/日语/中文 搜索词汇 |
+| 📝 完整活用形 | 4级敬语×4语气×3时态=48种变形 |
+| 🤖 AI句子分析 | DeepSeek AI 解析韩语句子语法+翻译 |
+| 🌙 暗黑模式 | 默认深色主题护眼 |
+| 🎨 可爱界面 | 粉色马卡龙配色+大圆角+弹跳动画 |
+| 🌐 中日前切换 | 界面语言随浏览器自动切换 |
+| 📱 PWA支持 | 添加到主屏幕，像 App 一样全屏使用 |
 
 ---
 
-## 🚀 アクセス方法 / 怎么打开
+## 🌐 言語切替 ｜ 切换语言
 
-**そのままブラウザで開く：**
+`設定 ⚙️` → `表示言語` → **日本語** or **中文**
+
+---
+
+## 🛠 技術構成 ｜ 技术栈
 
 ```
-https://korean-app-c77j.onrender.com
+HTML/CSS/JS (PWA)  →  Python Flask  →  SQLite  →  DeepSeek AI  →  Render
 ```
 
-**iPhoneでアプリ化（おすすめ）：**
-
-1. Safari で上記URLを開く
-2. 下部の「共有」ボタンをタップ
-3. 「ホーム画面に追加」を選択
-4. ホーム画面にアイコンが表示され、フルスクリーンで起動！
-
-> 💡 Android の場合も Chrome で開いて「ホーム画面に追加」で同様に使えます
-
 ---
 
-## 📖 使い方 / 使用方法
-
-### 🔍 単語検索 / 查词
-
-1. 検索タブを開く
-2. 検索言語ボタンを選ぶ：
-   - `한국어 → 日本語` ：韓国語で検索、日本語で意味表示
-   - `日本語 → 한국어` ：日本語で検索、韓国語を表示
-3. 単語を入力、結果をタップすると詳細が表示される
-4. 詳細画面で「活用形」「例文」「関連語」を切り替え可能
-
-### 📝 文章分析 / 句子分析
-
-1. 「文章」タブを開く
-2. 韓国語の文章を入力（例：`저는 학교에 갔어요`）
-3. 「文章を分析」ボタンをタップ
-4. AIが文章を分解し、文法ポイントと翻訳を表示
-
-### 🌐 言語切替 / 切换语言
-
-- 設定タブ → 「表示言語」で 日本語 / 中文 を切替
-- 初回アクセス時はブラウザの言語設定に自動追従
-
----
-
-## 🛠 技術スタック / 技术栈
-
-| 層 | 技術 |
-|----|------|
-| フロントエンド | HTML/CSS/JS (PWA), iOS デザイン言語 |
-| バックエンド | Python Flask + SQLAlchemy |
-| データベース | SQLite (2,120語 + 53,280活用形) |
-| AI | DeepSeek Chat API |
-| ホスティング | Render (無料枠) |
-
----
-
-## 🏠 ローカル実行 / 本地运行
+## 🏠 ローカル実行 ｜ 本地运行
 
 ```bash
 git clone https://github.com/catlike-soda/space.git
 cd space/backend
 pip install -r requirements.txt
 python build_database.py
-DEEPSEEK_API_KEY=your_key python app.py
+DEEPSEEK_API_KEY=sk-xxxx python app.py
 # → http://127.0.0.1:5000
 ```
 
 ---
 
-*Made with 💖 by catlike-soda | Powered by DeepSeek AI*
+<p align="center">
+  <sub>Made with 💖 by <a href="https://github.com/catlike-soda">catlike-soda</a></sub>
+</p>
