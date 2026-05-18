@@ -7,7 +7,7 @@
 </div>
 
 <p align="center">
-  <a href="http://47.103.100.87">
+  <a href="https://catlike-soda.asia">
     <img src="https://img.shields.io/badge/🚀_いますぐ開く_｜_立即打开_🇨🇳国内高速-FF7BA6?style=for-the-badge&logo=safari&logoColor=white&labelColor=FF5C8A&color=FF7BA6" alt="Open App">
   </a>
 </p>
@@ -15,13 +15,11 @@
 <h3 align="center">👆 クリックで開く ｜ 点击打开</h3>
 
 <p align="center">
-  <sub>🔗 <a href="http://47.103.100.87">http://47.103.100.87</a>（阿里云上海 · 国内秒开）</sub>
+  <sub>🔗 <a href="https://catlike-soda.asia">catlike-soda.asia</a>（阿里云上海 · 国内秒开 · HTTPS）</sub>
   <br>
   <sub>🔄 备用：<a href="https://korean-app-c77j.onrender.com">korean-app-c77j.onrender.com</a>（Render · 海外）</sub>
   <br>
   <sub>📱 iPhone: Safariで開く → 共有 → ホーム画面に追加 → アプリ化</sub>
-  <br>
-  <sub>🌐 まもなくドメイン登場：catlike-soda.asia</sub>
 </p>
 
 ---
