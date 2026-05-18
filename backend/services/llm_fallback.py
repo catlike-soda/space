@@ -1,7 +1,8 @@
-"""Free LLM API for sentence analysis using Google Gemini Flash.
+"""DeepSeek API for sentence analysis.
 
-Gemini Flash 2.0: free forever, 1,500 requests/day, no credit card.
-Get API key: https://aistudio.google.com/apikey
+DeepSeek: Chinese company, accessible in China without VPN.
+Free credits on signup (5M tokens), then ¥1/1M tokens (~$0.14).
+Get API key: https://platform.deepseek.com/api_keys
 """
 
 import json
@@ -10,76 +11,57 @@ import os
 import urllib.request
 import urllib.error
 
-GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
+DEEPSEEK_URL = "https://api.deepseek.com/v1/chat/completions"
 
 _cache = {}
 
 
-def _cache_key(sentence: str) -> str:
-    return hashlib.md5(sentence.encode()).hexdigest()
+def _cache_key(sentence: str, ui_lang: str) -> str:
+    return hashlib.md5((sentence + ui_lang).encode()).hexdigest()
 
 
 def analyze_sentence(sentence: str, ui_lang: str = "ja") -> dict or None:
-    """Send sentence to Gemini Flash for grammar analysis. Free forever.
-
-    Args:
-        sentence: Korean sentence to analyze
-        ui_lang: 'ja' for Japanese, 'zh' for Chinese
-
-    Returns parsed JSON dict if successful, None otherwise.
-    """
-    key = _cache_key(sentence + ui_lang)
+    """Analyze Korean sentence with DeepSeek. Returns structured JSON."""
+    key = _cache_key(sentence, ui_lang)
     if key in _cache:
         return _cache[key]
 
-    api_key = os.environ.get("GEMINI_API_KEY", "")
+    api_key = os.environ.get("DEEPSEEK_API_KEY", "")
     if not api_key:
         return None
 
-    lang_instruction = "Japanese" if ui_lang == "ja" else "Chinese"
+    lang_name = "Japanese" if ui_lang == "ja" else "Chinese"
 
-    prompt = f"""Analyze this Korean sentence as a language teacher. Output ONLY valid JSON:
-
+    if ui_lang == "ja":
+        prompt = f"""韓国語を日本語文法で分析。語節数は入力と一致。JSONのみ出力：
 "{sentence}"
-
-{{
-  "tokens": [
-    {{
-      "original": "Korean word/chunk",
-      "dictionary_form": "dictionary form or null",
-      "meaning": "meaning in {lang_instruction}",
-      "grammar_role": "subject/object/verb/adjective/adverb/particle/etc"
-    }}
-  ],
-  "grammar_points": [
-    {{
-      "pattern": "grammar pattern in Korean",
-      "explanation": "explanation in {lang_instruction}"
-    }}
-  ],
-  "translation": "full translation in {lang_instruction}"
-}}"""
+{{"tokens":[{{"original":"語節","meaning":"意味","grammar":"文法（日本語文法と比較）"}}],"translation":"自然な日本語訳"}}"""
+    else:
+        prompt = f"""分析韩语句子，参照日语语法。语节数=输入。只输出JSON：
+"{sentence}"
+{{"tokens":[{{"original":"语节","meaning":"中文意思","grammar":"语法（参照日语语法对比说明）"}}],"translation":"中文翻译"}}"""
 
     try:
         req = urllib.request.Request(
-            f"{GEMINI_API_URL}?key={api_key}",
+            DEEPSEEK_URL,
             data=json.dumps({
-                "contents": [{
-                    "parts": [{"text": prompt}]
-                }],
-                "generationConfig": {
-                    "temperature": 0.1,
-                    "maxOutputTokens": 1024,
-                }
+                "model": "deepseek-chat",
+                "messages": [
+                    {"role": "system", "content": "You are a Korean language analysis engine. Output valid JSON only."},
+                    {"role": "user", "content": prompt},
+                ],
+                "temperature": 0.0,
+                "max_tokens": 512,
             }).encode(),
-            headers={"Content-Type": "application/json"},
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {api_key}",
+            },
         )
 
-        with urllib.request.urlopen(req, timeout=15) as resp:
+        with urllib.request.urlopen(req, timeout=20) as resp:
             data = json.loads(resp.read().decode())
-            content = data["candidates"][0]["content"]["parts"][0]["text"]
-
-            content = content.strip()
+            content = data["choices"][0]["message"]["content"].strip()
             if content.startswith("```"):
                 lines = content.split("\n")
                 content = "\n".join(lines[1:-1] if lines[-1].strip() == "```" else lines[1:])

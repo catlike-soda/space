@@ -33,26 +33,37 @@ def analyze_sentence():
 
     result = analyze(sentence, dict_lookup)
 
-    # Step 2: Always call Gemini Flash for high-quality analysis (free forever)
+    # Step 2: AI enrichment via DeepSeek
     llm_result = llm_analyze(sentence, ui_lang)
     if llm_result:
         if llm_result.get("translation"):
             result["translation_zh"] = llm_result["translation"]
-        if llm_result.get("grammar_points"):
-            for gp in llm_result.get("grammar_points", []):
-                result["grammar_points"].append({
-                    "pattern": gp.get("pattern", ""),
-                    "explanation": gp.get("explanation", ""),
-                })
         if llm_result.get("tokens"):
-            for i, token in enumerate(result["tokens"]):
-                if i < len(llm_result["tokens"]):
-                    lt = llm_result["tokens"][i]
+            llm_token_map = {}
+            for lt in llm_result["tokens"]:
+                key = lt.get("original", "").strip()
+                if key:
+                    llm_token_map[key] = lt
+
+            for token in result["tokens"]:
+                orig = token.get("original", "")
+                lt = llm_token_map.get(orig)
+                if lt is None:
+                    for key, val in llm_token_map.items():
+                        if key in orig or orig in key:
+                            lt = val
+                            break
+                if lt:
+                    ai_meaning = lt.get("meaning", "")
+                    ai_grammar = lt.get("grammar", "")
                     if token.get("word_info") is None:
                         token["word_info"] = {
-                            "meaning_zh": lt.get("meaning", ""),
-                            "grammar_role": lt.get("grammar_role", ""),
-                            "dictionary_form": lt.get("dictionary_form"),
+                            "meaning_zh": ai_meaning,
+                            "grammar_ai": ai_grammar,
                         }
+                    else:
+                        token["word_info"]["grammar_ai"] = ai_grammar
+                        if not token["word_info"].get("meaning_zh"):
+                            token["word_info"]["meaning_zh"] = ai_meaning
 
     return jsonify(result)

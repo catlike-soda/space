@@ -471,46 +471,103 @@ html, body {
 .token-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
   margin-top: 16px;
 }
 .token-capsule {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
-  padding: 10px 14px;
+  padding: 12px 16px;
   border-radius: var(--radius-lg);
   background: var(--accent-light);
   border: 2px solid rgba(255,123,166,0.15);
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.2s ease;
   box-shadow: 0 2px 8px rgba(255,123,166,0.08);
+  min-width: 100px;
 }
-.token-capsule:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255,123,166,0.15); }
-.token-capsule:active { transform: scale(0.93); }
+.token-capsule:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,123,166,0.15); }
+.token-capsule:active { transform: scale(0.97); }
+
+.token-main {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
 .token-original {
   font-family: var(--font-korean);
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 700;
   color: var(--accent-dark);
 }
+.token-arrow {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
 .token-meaning {
-  font-size: 11px;
-  color: var(--text-secondary);
-  margin-top: 2px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.token-grammar-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+.token-particle {
+  font-size: 10px;
+  color: #059669;
+  padding: 1px 6px;
+  background: rgba(5,150,105,0.1);
+  border-radius: 3px;
+}
+.token-ending {
+  font-size: 10px;
+  color: #7c3aed;
+  padding: 1px 6px;
+  background: rgba(124,58,237,0.1);
+  border-radius: 3px;
+}
+.token-grammar {
+  font-size: 10px;
+  color: #d97706;
+  padding: 1px 6px;
+  background: rgba(217,119,6,0.1);
+  border-radius: 3px;
+  max-width: 280px;
+  line-height: 1.4;
 }
 
-/* === Grammar Card === */
-.grammar-card {
+/* === Grammar Compact === */
+.grammar-compact {
+  margin-top: 16px;
+  padding: 12px 14px;
   background: var(--bg-card);
-  border-radius: var(--radius-lg);
-  padding: 16px 18px;
-  margin-top: 12px;
-  border: 2px solid var(--separator);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--separator);
 }
-.grammar-card:active { transform: scale(0.98); }
+.grammar-compact-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+.grammar-tag {
+  display: inline-block;
+  font-size: 11px;
+  color: var(--accent-dark);
+  padding: 3px 8px;
+  margin: 2px 4px 2px 0;
+  background: var(--accent-light);
+  border-radius: 4px;
+}
+.grammar-tag small {
+  color: var(--text-secondary);
+  font-weight: normal;
+}
+
+/* === Grammar Card (legacy, kept for reference) === */
 .grammar-pattern {
   font-family: var(--font-korean);
   font-size: 16px;
@@ -529,28 +586,28 @@ html, body {
   margin-top: 4px;
 }
 
-/* === Translation Box === */
+/* === Translation Box (top of results) === */
 .translation-box {
-  background: linear-gradient(135deg, var(--accent-light) 0%, rgba(255,200,220,0.3) 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, #FF8DA9 100%);
   border-radius: var(--radius-lg);
-  padding: 18px 20px;
-  margin-top: 18px;
-  border: 2px solid rgba(255,123,166,0.2);
-  box-shadow: var(--shadow-sm);
+  padding: 20px 24px;
+  margin-top: 16px;
+  margin-bottom: 4px;
+  box-shadow: 0 4px 16px rgba(255,107,138,0.25);
 }
 .translation-label {
   font-size: 11px;
   font-weight: 700;
-  color: var(--accent-dark);
+  color: rgba(255,255,255,0.8);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 6px;
 }
 .translation-text {
-  font-size: 17px;
-  color: var(--text-primary);
+  font-size: 20px;
+  color: #fff;
   line-height: 1.6;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* === Favorites === */
