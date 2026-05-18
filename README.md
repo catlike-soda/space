@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://catlike-soda.asia">
-    <img src="https://img.shields.io/badge/🚀_いますぐ開く_｜_立即打开_🇨🇳国内高速-FF7BA6?style=for-the-badge&logo=safari&logoColor=white&labelColor=FF5C8A&color=FF7BA6" alt="Open App">
+    <img src="https://img.shields.io/badge/🚀_いますぐ開く_｜_立即打开_🇨🇳国内高速-14B8A6?style=for-the-badge&logo=safari&logoColor=white&labelColor=0D9488&color=14B8A6" alt="Open App">
   </a>
 </p>
 
@@ -44,15 +44,15 @@
 ## ✨ 機能
 
 <p align="center">
-  <img src="https://img.shields.io/badge/🔍_多言語検索-FFD1DC?style=flat-square" alt="">
-  <img src="https://img.shields.io/badge/📝_活用形48種-FFD1DC?style=flat-square" alt="">
-  <img src="https://img.shields.io/badge/🤖_AI文章分析-FFD1DC?style=flat-square" alt="">
-  <img src="https://img.shields.io/badge/🌙_ダークモード-FFD1DC?style=flat-square" alt="">
-  <img src="https://img.shields.io/badge/🎨_かわいいUI-FFD1DC?style=flat-square" alt="">
-  <img src="https://img.shields.io/badge/🌐_日中切替-FFD1DC?style=flat-square" alt="">
-  <img src="https://img.shields.io/badge/📚_2,120語-FFD1DC?style=flat-square" alt="">
-  <img src="https://img.shields.io/badge/📱PWA-FFD1DC?style=flat-square" alt="">
-  <img src="https://img.shields.io/badge/❤️_お気に入り-FFD1DC?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/🔍_多言語検索-2DD4BF?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/📝_活用形48種-2DD4BF?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/🤖_AI文章分析-2DD4BF?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/🌙_ダークモード-2DD4BF?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/🎨_かわいいUI-2DD4BF?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/🌐_日中切替-2DD4BF?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/📚_2,120語-2DD4BF?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/📱PWA-2DD4BF?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/❤️_お気に入り-2DD4BF?style=flat-square" alt="">
 </p>
 
 | 機能 | 説明 |
@@ -116,15 +116,15 @@ DEEPSEEK_API_KEY=sk-xxxx python app.py
 ## ✨ 功能
 
 <p align="center">
-  <img src="https://img.shields.io/badge/🔍_多语言查词-FFD1DC?style=flat-square" alt="">
-  <img src="https://img.shields.io/badge/📝_48种变形-FFD1DC?style=flat-square" alt="">
-  <img src="https://img.shields.io/badge/🤖_AI句子分析-FFD1DC?style=flat-square" alt="">
-  <img src="https://img.shields.io/badge/🌙_暗黑模式-FFD1DC?style=flat-square" alt="">
-  <img src="https://img.shields.io/badge/🎨_可爱界面-FFD1DC?style=flat-square" alt="">
-  <img src="https://img.shields.io/badge/🌐_中日切换-FFD1DC?style=flat-square" alt="">
-  <img src="https://img.shields.io/badge/📚_2120词-FFD1DC?style=flat-square" alt="">
-  <img src="https://img.shields.io/badge/📱PWA-FFD1DC?style=flat-square" alt="">
-  <img src="https://img.shields.io/badge/❤️_收藏夹-FFD1DC?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/🔍_多语言查词-2DD4BF?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/📝_48种变形-2DD4BF?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/🤖_AI句子分析-2DD4BF?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/🌙_暗黑模式-2DD4BF?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/🎨_可爱界面-2DD4BF?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/🌐_中日切换-2DD4BF?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/📚_2120词-2DD4BF?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/📱PWA-2DD4BF?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/❤️_收藏夹-2DD4BF?style=flat-square" alt="">
 </p>
 
 | 功能 | 说明 |
