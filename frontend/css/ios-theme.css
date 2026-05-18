@@ -1,4 +1,4 @@
-/* Kawaii iOS theme refinements */
+/* iOS theme refinements */
 
 @supports (-webkit-overflow-scrolling: touch) {
   #mainContent, .sheet-content {
@@ -25,25 +25,25 @@ input, textarea { font-size: 16px !important; }
 /* Active state */
 @media (hover: none) {
   .card:active, .token-capsule:active {
-    background: rgba(255,123,166,0.08);
+    background: rgba(45,212,191,0.08);
   }
 }
 
-/* Dark mode kawaii refinements */
+/* Dark mode card and input refinements */
 [data-theme="dark"] .card {
-  border-color: rgba(255,150,180,0.1);
+  border-color: rgba(45,212,191,0.08);
 }
 [data-theme="dark"] .search-input {
-  border-color: rgba(255,150,180,0.15);
+  border-color: rgba(45,212,191,0.12);
 }
 [data-theme="dark"] .search-input:focus {
-  box-shadow: 0 0 0 4px rgba(255,123,166,0.15), 0 4px 12px rgba(255,123,166,0.1);
+  box-shadow: 0 0 0 4px rgba(45,212,191,0.12), 0 4px 12px rgba(0,0,0,0.3);
 }
 [data-theme="dark"] .analyze-btn {
-  box-shadow: 0 4px 16px rgba(255,123,166,0.25);
+  box-shadow: 0 4px 16px rgba(45,212,191,0.15);
 }
 [data-theme="dark"] .page::before {
-  opacity: 0.3;
+  opacity: 0.15;
 }
 
 /* Heartbeat animation for fav button when active */

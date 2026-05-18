@@ -5,15 +5,11 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("/sw.js").then(
       (reg) => {
         console.log("SW registered:", reg.scope);
-        // Check for updates
         reg.addEventListener("updatefound", () => {
           const newWorker = reg.installing;
           newWorker.addEventListener("statechange", () => {
             if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
-              // New content available
-              if (confirm(t("pwa_update"))) {
-                window.location.reload();
-              }
+              window.location.reload();
             }
           });
         });

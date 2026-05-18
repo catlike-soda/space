@@ -9,26 +9,31 @@
   --radius-pill: 9999px;
 
   --blur-bg: blur(24px) saturate(200%);
-  --shadow-sm: 0 2px 8px rgba(255,107,138,0.12);
-  --shadow-md: 0 4px 16px rgba(255,107,138,0.15);
-  --shadow-lg: 0 8px 32px rgba(255,107,138,0.18);
 
-  --accent: #FF7BA6;
-  --accent-light: #FFF0F5;
-  --accent-dark: #FF5C8A;
-  --accent-gradient: linear-gradient(135deg, #FF8EB5 0%, #FF7BA6 50%, #FFB3D0 100%);
+  /* Dark theme is default */
+  --bg-primary: #0A0A0A;
+  --bg-card: rgba(26,26,26,0.95);
+  --bg-input: rgba(32,32,32,0.95);
+  --text-primary: #FFFFFF;
+  --text-secondary: #B0B0B0;
+  --text-tertiary: #707070;
+  --separator: rgba(255,255,255,0.06);
+  --tab-bar-bg: rgba(10,10,10,0.94);
 
-  --bg-primary: #FFF5F8;
-  --bg-card: rgba(255,255,255,0.9);
-  --bg-input: rgba(255,255,255,0.92);
-  --text-primary: #3D2C35;
-  --text-secondary: #B0959E;
-  --text-tertiary: #E0CCD4;
-  --separator: rgba(255,150,180,0.15);
-  --tab-bar-bg: rgba(255,250,252,0.88);
-  --danger: #FF6B8A;
-  --success: #7BC8A4;
-  --warning: #FFB347;
+  --accent: #2DD4BF;
+  --accent-light: #0A2A26;
+  --accent-dark: #5EEAD4;
+  --accent-gradient: linear-gradient(135deg, #0D9488 0%, #2DD4BF 50%, #5EEAD4 100%);
+
+  --accent-blue: #60A5FA;
+  --accent-yellow: #FACC15;
+
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.6);
+  --danger: #EF4444;
+  --success: #22C55E;
+  --warning: #F59E0B;
 
   --nav-height: 48px;
   --tab-height: 56px;
@@ -36,18 +41,19 @@
   --safe-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--tab-height));
 }
 
-[data-theme="dark"] {
-  --bg-primary: #1A1018;
-  --bg-card: rgba(40,25,35,0.9);
-  --bg-input: rgba(40,25,35,0.92);
-  --text-primary: #F5E6EE;
-  --text-secondary: #A08898;
-  --text-tertiary: #5A4452;
-  --separator: rgba(255,150,180,0.12);
-  --tab-bar-bg: rgba(30,18,25,0.88);
-  --shadow-sm: 0 2px 8px rgba(255,107,138,0.08);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.25);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.35);
+[data-theme="light"] {
+  --bg-primary: #F5F5F5;
+  --bg-card: rgba(255,255,255,0.95);
+  --bg-input: rgba(255,255,255,0.98);
+  --text-primary: #1A1A1A;
+  --text-secondary: #6B6B6B;
+  --text-tertiary: #B0B0B0;
+  --separator: rgba(0,0,0,0.08);
+  --tab-bar-bg: rgba(245,245,245,0.92);
+  --accent-light: #F0FDFA;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.15);
 }
 
 /* === Reset & Base === */
@@ -261,7 +267,7 @@ html, body {
 .segment-btn.active {
   background: var(--accent-gradient);
   color: white;
-  box-shadow: 0 3px 12px rgba(255,123,166,0.3);
+  box-shadow: 0 3px 12px rgba(20,184,166,0.3);
 }
 
 /* === Cards === */
@@ -353,7 +359,7 @@ html, body {
 }
 .search-input:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px var(--accent-light), 0 4px 12px rgba(255,123,166,0.15);
+  box-shadow: 0 0 0 4px var(--accent-light), 0 4px 12px rgba(20,184,166,0.15);
   transform: translateY(-1px);
 }
 .search-input::placeholder { color: var(--text-tertiary); font-style: italic; }
@@ -389,7 +395,7 @@ html, body {
   background: var(--accent-gradient);
   color: white;
   border-color: transparent;
-  box-shadow: 0 3px 12px rgba(255,123,166,0.3);
+  box-shadow: 0 3px 12px rgba(20,184,166,0.3);
   transform: scale(1.03);
 }
 
@@ -460,10 +466,10 @@ html, body {
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 4px 16px rgba(255,123,166,0.3);
+  box-shadow: 0 4px 16px rgba(20,184,166,0.3);
   letter-spacing: 1px;
 }
-.analyze-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,123,166,0.4); }
+.analyze-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(20,184,166,0.4); }
 .analyze-btn:active { transform: scale(0.96); opacity: 0.9; }
 .analyze-btn:disabled { opacity: 0.5; transform: none; }
 
@@ -477,37 +483,36 @@ html, body {
 .token-capsule {
   display: flex;
   flex-direction: column;
-  padding: 12px 16px;
+  padding: 14px 18px;
   border-radius: var(--radius-lg);
-  background: var(--accent-light);
-  border: 2px solid rgba(255,123,166,0.15);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
   transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(255,123,166,0.08);
   min-width: 100px;
 }
-.token-capsule:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,123,166,0.15); }
+.token-capsule:hover { transform: translateY(-1px); background: rgba(255,255,255,0.06); }
 .token-capsule:active { transform: scale(0.97); }
 
 .token-main {
   display: flex;
   align-items: baseline;
-  gap: 6px;
+  gap: 8px;
 }
 .token-original {
   font-family: var(--font-korean);
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--accent-dark);
+  font-size: 18px;
+  font-weight: 800;
+  color: #FFFFFF;
 }
 .token-arrow {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-tertiary);
   flex-shrink: 0;
 }
 .token-meaning {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
 }
 .token-grammar-line {
   display: flex;
@@ -517,23 +522,23 @@ html, body {
 }
 .token-particle {
   font-size: 10px;
-  color: #059669;
+  color: #93C5FD;
   padding: 1px 6px;
-  background: rgba(5,150,105,0.1);
+  background: rgba(96,165,250,0.12);
   border-radius: 3px;
 }
 .token-ending {
   font-size: 10px;
-  color: #7c3aed;
+  color: #FDE047;
   padding: 1px 6px;
-  background: rgba(124,58,237,0.1);
+  background: rgba(250,204,21,0.12);
   border-radius: 3px;
 }
 .token-grammar {
   font-size: 10px;
-  color: #d97706;
+  color: #5EEAD4;
   padding: 1px 6px;
-  background: rgba(217,119,6,0.1);
+  background: rgba(45,212,191,0.12);
   border-radius: 3px;
   max-width: 280px;
   line-height: 1.4;
@@ -588,12 +593,12 @@ html, body {
 
 /* === Translation Box (top of results) === */
 .translation-box {
-  background: linear-gradient(135deg, var(--accent) 0%, #FF8DA9 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, #2DD4BF 100%);
   border-radius: var(--radius-lg);
   padding: 20px 24px;
   margin-top: 16px;
   margin-bottom: 4px;
-  box-shadow: 0 4px 16px rgba(255,107,138,0.25);
+  box-shadow: 0 4px 16px rgba(13,148,136,0.25);
 }
 .translation-label {
   font-size: 11px;

@@ -63,10 +63,10 @@ function showToast(msg, duration = 2000) {
 // ---- Theme ----
 function applyTheme(dark, accent) {
   document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
-  document.documentElement.style.setProperty("--accent", accent || "#FF6B8A");
-  document.documentElement.style.setProperty("--accent-light", hexToRgba(accent || "#FF6B8A", 0.15));
-  document.documentElement.style.setProperty("--accent-dark", darkenColor(accent || "#FF6B8A", 0.15));
-  document.querySelector('meta[name="theme-color"]').content = dark ? "#000000" : (accent || "#FF6B8A");
+  document.documentElement.style.setProperty("--accent", accent || "#2DD4BF");
+  document.documentElement.style.setProperty("--accent-light", hexToRgba(accent || "#2DD4BF", 0.15));
+  document.documentElement.style.setProperty("--accent-dark", darkenColor(accent || "#2DD4BF", 0.15));
+  document.querySelector('meta[name="theme-color"]').content = dark ? "#000000" : (accent || "#2DD4BF");
 }
 
 function hexToRgba(hex, alpha) {
@@ -84,10 +84,19 @@ function darkenColor(hex, amount) {
 }
 
 // ---- Init ----
+const DEFAULT_ACCENT = "#2DD4BF";
+
 async function initApp() {
   // Load locale first, then settings
   await loadLocale();
   const settings = await LocalCache.getSettings();
+
+  // Migrate old pink accent to new teal default
+  if (settings.accentColor === "#FF6B8A" || settings.accentColor === "#FF7BA6" || settings.accentColor === "#FF5C8A") {
+    settings.accentColor = DEFAULT_ACCENT;
+    await LocalCache.saveSetting("accentColor", DEFAULT_ACCENT);
+  }
+
   applyTheme(settings.darkMode, settings.accentColor);
 
   // Update tab bar labels

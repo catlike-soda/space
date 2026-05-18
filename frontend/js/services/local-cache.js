@@ -93,7 +93,7 @@ const LocalCache = {
     const accent = await this.get("settings", "accentColor");
     return {
       darkMode: dark ? dark.value : true,
-      accentColor: accent ? accent.value : "#FF6B8A",
+      accentColor: accent ? accent.value : "#2DD4BF",
     };
   },
 
